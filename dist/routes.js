@@ -1,25 +1,23 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Routes = void 0;
-const UserController_1 = require("./controllers/UserController");
-exports.Routes = [{
-        method: "get",
-        route: "/users",
-        controller: UserController_1.UserController,
-        action: "all"
-    }, {
-        method: "get",
-        route: "/users/:id",
-        controller: UserController_1.UserController,
-        action: "one"
-    }, {
-        method: "post",
-        route: "/users",
-        controller: UserController_1.UserController,
-        action: "save"
-    }, {
-        method: "delete",
-        route: "/users/:id",
-        controller: UserController_1.UserController,
-        action: "remove"
-    }];
+// import { UserController } from "./controllers/UserController"
+// export const Routes = [{
+//     method: "get",
+//     route: "/users",
+//     controller: UserController,
+//     action: "all"
+// }, {
+//     method: "get",
+//     route: "/users/:id",
+//     controller: UserController,
+//     action: "one"
+// }, {
+//     method: "post",
+//     route: "/users",
+//     controller: UserController,
+//     action: "save"
+// }, {
+//     method: "delete",
+//     route: "/users/:id",
+//     controller: UserController,
+//     action: "remove"
+// }]

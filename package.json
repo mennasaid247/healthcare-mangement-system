@@ -16,26 +16,35 @@
    "dependencies": {
       "@faker-js/faker": "^9.3.0",
       "@jorgebodega/typeorm-seeding": "^7.1.0",
+      "@types/bcryptjs": "^2.4.6",
+      "@types/jsonwebtoken": "^9.0.8",
+      "@types/memory-cache": "^0.2.6",
       "bcrypt": "^5.1.1",
+      "bcryptjs": "^2.4.3",
       "body-parser": "^1.19.1",
       "class-validator": "^0.14.1",
+      "concurrently": "^9.1.2",
       "express": "^4.21.2",
+      "jsonwebtoken": "^9.0.2",
+      "memory-cache": "^0.2.0",
       "morgan": "^1.10.0",
       "pg": "^8.13.1",
       "reflect-metadata": "^0.1.14",
       "tsconfig-paths": "^4.2.0",
       "typeorm": "^0.3.20",
-      "typeorm-extension": "^3.6.3"
+      "typeorm-extension": "^3.6.3",
+      "yup": "^1.6.1"
    },
    "scripts": {
       "build": "tsc",
       "seed": "ts-node src/seed.ts",
-      "start":"ts-node src/seed.ts",
-      "dev": "npm run build && npm run seed && nodemon -w src -w .env src/server.ts",
+      "start": "ts-node src/seed.ts",
+     "dev": "npm run build && nodemon -w src -w .env src/server.ts",
+
+
       "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
       "typeorm:drop": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js schema:drop --drop-database -d src/data-source.ts",
       "typeorm:migration:generate": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate -d src/data-source.ts",
       "typeorm:migrate": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d src/data-source.ts"
-
    }
 }

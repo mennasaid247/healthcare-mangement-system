@@ -5,12 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
-const { signup, login } = require("../controllers/authController");
-// endpoints for signup &login el howa yktb /login & /signup
-//signup
-router.post("/signup", signup);
-//login
-router.post("/login", login);
-// module.exports = router;
-// const verifyToken = require("../middleware/authMiddleware");
+const verifyToken = require("../middleware/authMiddleware");
+router.get("/profile", verifyToken, (req, res) => {
+    res.json({ message: "welcome verified user" });
+});
 exports.default = router;

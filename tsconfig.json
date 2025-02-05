@@ -24,8 +24,10 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "skipLibCheck": true,  // Add this if you're having library issues
+    "strictPropertyInitialization": false,
+    "skipLibCheck": true, // Add this if you're having library issues
     "strict": true,
+    "noImplicitAny": true,
     "outDir": "dist",
     "rootDir": "src"
   },
