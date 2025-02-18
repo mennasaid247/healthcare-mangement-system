@@ -25,7 +25,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const jwt = __importStar(require("jsonwebtoken"));
 const { JWT_SECRET = "" } = process.env;
-// Solution 1: When the type of the object is known
 const verifyToken = (req, res, next) => {
     const header = req.headers.authorization || req.headers.Authorization;
     if (!header) {
@@ -41,9 +40,10 @@ const verifyToken = (req, res, next) => {
             return res.status(401).json({ message: "Unauthorized" });
         }
         // req[" currentUser"] = decode;
-        req.body = { ...req.body, decode };
+        req.user = decode;
+        // req.body = { ...req.body, decode };
         // req.currentUser = decode;
-        console.log('the decoded user:', req.body);
+        console.log('the decoded user:', req.user);
         next();
     }
     catch (error) {

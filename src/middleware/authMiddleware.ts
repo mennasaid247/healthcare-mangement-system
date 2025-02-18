@@ -1,13 +1,13 @@
 import { NextFunction, Request, Response } from "express";
-
-
+import { JwtPayload } from "jsonwebtoken";
 import * as jwt from "jsonwebtoken";
 const { JWT_SECRET = "" } = process.env;
+interface AuthenticatedRequest extends Request {
+  user?: any; 
+}
 
 
-// Solution 1: When the type of the object is known
-
- const verifyToken = (req: Request,res: Response,next: NextFunction) => {
+ const verifyToken = (req: AuthenticatedRequest,res: Response,next: NextFunction) => {
   const header = req.headers.authorization || req.headers.Authorization;
   if (!header) {
     return res.status(401).json({ message: "Unauthorized" });
@@ -16,18 +16,26 @@ const { JWT_SECRET = "" } = process.env;
   if (!token) {
     return res.status(401).json({ message: "Unauthorized" });
   }
-  try{const decode = jwt.verify(token, JWT_SECRET);
+  try{
+    const decode = jwt.verify(token, JWT_SECRET);
     if (!decode) {
-      return res.status(401).json({ message: "Unauthorized" });
+      return res.status(401).json({ message: "You need to be loggedin" });
     }
     // req[" currentUser"] = decode;
-    req.body = { ...req.body, decode };
+    req.user=decode;
+    // req.body = { ...req.body, decode };
     // req.currentUser = decode;
-    console.log('the decoded user:',req.body);
+    console.log('the decoded user:',req.user);
 
     next();
 }catch(error){
+  
     return res.status(400).json({ message: "token is unvalid" });
+
   }
 };
 module.exports = verifyToken;
+
+
+
+

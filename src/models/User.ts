@@ -283,10 +283,10 @@ export class User extends BaseEntity {
     MothernationalNumber?: string;
 
     @Column()
-    @Length(8, 255, { message: 'Password must be at least 8 characters long.' })
-    @Matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&])[A-Za-z\d@.#$!%*?&]{8,}$/, {
-        message: 'Password must contain at least one letter, one number, and one special character.',
-    })
+    // @Length(8, 255, { message: 'Password must be at least 8 characters long.' })
+    // @Matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&])[A-Za-z\d@.#$!%*?&]{8,}$/, {
+    //     message: 'Password must contain at least one letter, one number, and one special character.',
+    // })
     password!: string;
 
     @Column()
@@ -346,4 +346,13 @@ export class User extends BaseEntity {
 
     @Column({ default: "patient" })
     role!: string;
+
+    @Column({ nullable: true })
+    otp_code?: string;
+
+    @Column({ nullable: true })
+    otp_expiration?: Date;
+
+    @Column({ default: false })
+    is_verified!: boolean;
 }

@@ -91,7 +91,7 @@ app.use(express.json());
 
 // Routes
 app.use("/api/auth", authRoutes);
-//aktb el URL : /profile 3latoul
+//aktb el URL : /patient  3latoul
 app.use("/",userRoutes);
 
 const startServer = async () => {

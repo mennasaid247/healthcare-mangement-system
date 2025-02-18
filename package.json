@@ -9,12 +9,12 @@
       "@types/node": "^16.11.10",
       "dotenv": "^16.4.7",
       "eslint": "^9.16.0",
+      "faker": "^5.5.3",
       "nodemon": "^3.1.7",
       "ts-node": "^10.9.2",
       "typescript": "^4.5.2"
    },
    "dependencies": {
-      "@faker-js/faker": "^9.3.0",
       "@jorgebodega/typeorm-seeding": "^7.1.0",
       "@types/bcryptjs": "^2.4.6",
       "@types/jsonwebtoken": "^9.0.8",
@@ -28,6 +28,7 @@
       "jsonwebtoken": "^9.0.2",
       "memory-cache": "^0.2.0",
       "morgan": "^1.10.0",
+      "nodemailer": "^6.10.0",
       "pg": "^8.13.1",
       "reflect-metadata": "^0.1.14",
       "tsconfig-paths": "^4.2.0",
@@ -39,9 +40,7 @@
       "build": "tsc",
       "seed": "ts-node src/seed.ts",
       "start": "ts-node src/seed.ts",
-     "dev": "npm run build && nodemon -w src -w .env src/server.ts",
-
-
+      "dev": "npm run build && nodemon -w src -w .env src/server.ts",
       "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
       "typeorm:drop": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js schema:drop --drop-database -d src/data-source.ts",
       "typeorm:migration:generate": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate -d src/data-source.ts",

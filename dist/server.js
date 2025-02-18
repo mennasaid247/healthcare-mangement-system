@@ -73,12 +73,14 @@ const express_1 = __importDefault(require("express"));
 const data_source_1 = require("./data-source");
 const Server_config_1 = require("./config/Server-config");
 const authRoutes_1 = __importDefault(require("./routes/authRoutes"));
+const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 const app = (0, express_1.default)();
 // Middleware
 app.use(express_1.default.json());
 // Routes
 app.use("/api/auth", authRoutes_1.default);
-// app.use("/verify",userRoutes);
+//aktb el URL : /patient  3latoul
+app.use("/", userRoutes_1.default);
 const startServer = async () => {
     try {
         await data_source_1.AppDataSource.initialize();

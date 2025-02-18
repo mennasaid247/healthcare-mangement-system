@@ -40,13 +40,11 @@ export const signupSchema = yup.object().shape({
     .required('National number is required'),
   FathernationalNumber: yup.string().matches(/^\d{14}$/, 'National number must be exactly 14 digits long and contain only numbers').nullable(),
   MothernationalNumber: yup.string().matches(/^\d{14}$/, 'National number must be exactly 14 digits long and contain only numbers').nullable(),
-  password: yup
-    .string()
-    .min(8, 'Password must be at least 8 characters long.')
-    .matches(/[a-zA-Z]/, 'Password must contain at least one letter.')
-    .matches(/\d/, 'Password must contain at least one number.')
-    .matches(/[@$!%*?&#]/, 'Password must contain at least one special character.')
-    .required('Password is required'),
+  password: yup.string()
+  .matches(/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*#?&])/,
+           "Password must contain at least one letter, one number, and one special character.")
+  .min(8, "Password must be at least 8 characters long")
+  .required("Password is required"),
   confirmPassword: yup
     .string()
     .oneOf([yup.ref('password'), 'Passwords must match'], 'Passwords must match')

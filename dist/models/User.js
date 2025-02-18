@@ -262,11 +262,12 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "MothernationalNumber", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    (0, class_validator_1.Length)(8, 255, { message: 'Password must be at least 8 characters long.' }),
-    (0, class_validator_1.Matches)(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&])[A-Za-z\d@.#$!%*?&]{8,}$/, {
-        message: 'Password must contain at least one letter, one number, and one special character.',
-    }),
+    (0, typeorm_1.Column)()
+    // @Length(8, 255, { message: 'Password must be at least 8 characters long.' })
+    // @Matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&])[A-Za-z\d@.#$!%*?&]{8,}$/, {
+    //     message: 'Password must contain at least one letter, one number, and one special character.',
+    // })
+    ,
     __metadata("design:type", String)
 ], User.prototype, "password", void 0);
 __decorate([
@@ -333,6 +334,18 @@ __decorate([
     (0, typeorm_1.Column)({ default: "patient" }),
     __metadata("design:type", String)
 ], User.prototype, "role", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], User.prototype, "otp_code", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", Date)
+], User.prototype, "otp_expiration", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ default: false }),
+    __metadata("design:type", Boolean)
+], User.prototype, "is_verified", void 0);
 User = __decorate([
     (0, typeorm_1.Entity)(),
     (0, typeorm_1.Unique)(["email", "nationalNumber", "phonenumber"])
